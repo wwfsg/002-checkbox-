@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM方式和jQuery方式判断checkbox是否被选中</title>
+		<script src="js/jquery-3.6.0.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<!-- 
+			需求：勾选后弹框 "感谢你的支持!"
+			补充知识点：
+			1、jQuery is() 方法  https://www.runoob.com/jquery/traversing-is.html
+			需求：用 Dom 对象和 jQuery 对象分别完成“我已经阅读了上面制度”提示。
+			并回答哪种方式更高效：document.getElementById() 还是 $()？为什么？
+			 $()更高效。document.getElementByld()返回的是DOM对象，
+			而＄()返回的是jQuery对象,内部封装的更高效
+
+		 -->
+		<input type="checkbox" id="jq"/> <label for="jq">我已经阅读了上面制度(jQuery).</label>
+		<br>
+		<input type="checkbox" id="js"/> <label for="j">我已经阅读了上面制度(JS).</label>
+		<script type="text/javascript">
+			    window.onload = function () {
+			        document.getElementById('js').onclick = function () {
+			            if (this.checked) {
+			                alert('感谢你的支持！');
+			            }
+			        };
+			    };
+				    $(function () {
+				        $('#jq').click(function () {
+				            if ($(this).is(':checked')) {
+				                alert('感谢你的支持！');
+				            }
+				        });
+				    });
+
+
+		</script>
+		
+	</body>
+</html>
